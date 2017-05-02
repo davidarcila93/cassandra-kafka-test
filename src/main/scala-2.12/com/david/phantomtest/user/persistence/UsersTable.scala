@@ -14,12 +14,13 @@ class UsersModel extends CassandraTable[UsersModel, User] {
 }
 
 abstract class ConcreteUsersModel extends UsersModel with RootConnector {
-  def store(user: User): Future[ResultSet] = {
+  def store(user: User): Future[User] = {
     insert
       .value(_.id, user.id)
       .value(_.name, user.name)
       .consistencyLevel_=(ConsistencyLevel.QUORUM)
       .future()
+      .map( _ => user)
   }
 
   def getById(id: UUID): Future[Option[User]] = {

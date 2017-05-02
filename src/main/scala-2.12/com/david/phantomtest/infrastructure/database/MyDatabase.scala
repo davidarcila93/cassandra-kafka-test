@@ -1,4 +1,4 @@
-package com.david.phantomtest.infrastructure
+package com.david.phantomtest.infrastructure.database
 
 import com.david.phantomtest.user.persistence.ConcreteUsersModel
 import com.outworkers.phantom.connectors.CassandraConnection
